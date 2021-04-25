@@ -1,4 +1,5 @@
 const TRANSITION_DELAY = 500
+const STAT_STARTING_VALUE = 3
 
 const DESCRIPTORS = [
   'Rookie',
@@ -70,8 +71,8 @@ const ctbBtn = document.getElementById('ctb')
 const bearStat = document.getElementById('bearStat')
 const criminalStat = document.getElementById('criminalStat')
 
-let bearCount = 3
-let criminalCount = 3
+let bearCount = STAT_STARTING_VALUE
+let criminalCount = STAT_STARTING_VALUE
 
 bearStat.innerHTML = bearCount
 criminalStat.innerHTML = criminalCount
@@ -91,7 +92,6 @@ ctbBtn.addEventListener('click', () => {
   }
   criminalCount--
   bearCount++
-  console.log(criminalCount, bearCount)
   updateStats()
 })
 
@@ -104,11 +104,11 @@ function updateStats() {
 function checkForEndState() {
   if (bearCount >= 6) {
     addEndStyle(bearStat)
-    delayTransition(showBearEnding)
+    delayTransition(showEnding('bear'))
   }
   if (criminalCount >= 6) {
     addEndStyle(criminalStat)
-    delayTransition(showCriminalEnding)
+    delayTransition(showEnding('criminal'))
   }
 }
 
@@ -116,14 +116,23 @@ function delayTransition(transitionFn) {
   setTimeout(transitionFn, TRANSITION_DELAY)
 }
 
-function showCriminalEnding() {
-  document.body.innerHTML = '<div class="section outro">You are lured into a life of crime and betray the party.</div>'
-  document.body.classList.add('section')
+function showEnding(str) {
+  document.body.innerHTML = ''
+  const div = document.createElement('div')
+  div.textContent = getEndingText(str)
+  div.classList.add('section')
+  document.body.appendChild(div)
 }
 
-function showBearEnding() {
-  document.body.innerHTML = '<div class="section outro">You flip out bear-style and lose it. Presumably to be picked up by Animal Control in half an hour or so.</div>'
-  document.body.classList.add('section')
+function getEndingText(str) {
+  switch (str) {
+    case 'bear':
+      return 'You flip out bear-style and lose it. Presumably to be picked up by Animal Control in half an hour or so.'
+    case 'criminal':
+      return 'You are lured into a life of crime and betray the party.'
+    default:
+      return 'You should not have been able to get here'
+  }
 }
 
 function addEndStyle(statElement) {

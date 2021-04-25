@@ -68,7 +68,7 @@ div {
   justify-content: space-evenly;
 }
 
-.section {
+div.section {
   width: 60vw;
   margin: 1rem 2rem;
   padding: 2rem;
@@ -81,10 +81,6 @@ div {
 
 div#description {
   font-size: 2.5rem;
-  padding: 4rem;
-}
-
-div.section.outro {
   padding: 4rem;
 }
 
