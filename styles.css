@@ -136,7 +136,6 @@ p {
 @media screen and (max-width: 1000px){
   body * {
     font-size: 2rem;
-    flex-direction: column;
   }
 
   h1, button {
@@ -164,13 +163,29 @@ p {
 
 @media screen and (max-width: 420px){
   body * {
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
+
   h1, button {
     font-size: 2rem;
   }
 
+  div.section {
+    width: 90vw;
+  }
+
+  .button-container {
+    max-width: 100%;
+  }
+  .button-container>button {
+    padding: 1rem;
+  }  
+
   a.rules-link {
     margin-left: 0;
+  }
+
+  p {
+    padding: 0;
   }
 }
