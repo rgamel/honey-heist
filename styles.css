@@ -52,6 +52,13 @@ button {
   border-radius: 1rem;
   cursor: pointer;
   outline: none;
+  color: var(--clr-amber300);
+}
+
+.row>button {
+  min-width: 50%;
+  min-height: 100%;
+  width: 16rem;
 }
 
 button:hover {
@@ -96,7 +103,6 @@ div.buttons.column {
 div.row {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   justify-content: space-evenly;
 }
 
@@ -112,10 +118,19 @@ span.stat {
 i.fa {
   color: var(--clr-amber300);
 }
-a.rules-link {
+
+a {
   font-size: 1rem;
   color: inherit;
   text-decoration-line: none;
   color: var(--clr-amber900);
-  margin-left: 80vw;
+}
+
+a.rules-link {
+  margin-left: 45vw;
+}
+
+p {
+  padding: 4rem;
+  text-align: center;
 }

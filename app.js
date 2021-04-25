@@ -43,12 +43,32 @@ function rand(sides = 6) {
 }
 
 function makeBear() {
+  const seed = getParameterByName('seed')
+  console.log()
+  if (seed && seed.length) {
+    const s = seed.split(',')
+    return {
+      descriptor: DESCRIPTORS[s[0]],
+      role: ROLES[s[1]],
+      type: TYPES_AND_SKILLS[s[2]],
+      hat: HATS[s[3]],
+    }
+  }
   return {
     descriptor: DESCRIPTORS[rand()],
     role: ROLES[rand()],
     type: TYPES_AND_SKILLS[rand()],
     hat: HATS[rand(7)],
   }
+}
+
+function getParameterByName(name, url = window.location.href) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 function getIndefiniteArticle(descriptor) {
@@ -58,8 +78,21 @@ function getIndefiniteArticle(descriptor) {
   return 'a'
 }
 
+function parseBool(val) {
+  return val === true || val === 'true'
+}
+
 function makeString({descriptor, type, role, hat}) {
-  return `<span>You are ${getIndefiniteArticle(descriptor)} <strong>${descriptor} ${type.type}</strong> with the ability to <strong>${type.ability}</strong>. You're the <strong>${role}</strong> of the party${wearsHat ? `, and have been known to wear a <strong>${hat}</strong>.` : '.'}</span>`
+  const wearsHat = parseBool(getParameterByName('hat'))
+
+  console.log('wearsHat:', wearsHat)
+  return `<span>
+  You are ${getIndefiniteArticle(descriptor)} 
+  <strong>${descriptor} ${type.type}</strong>
+  with the ability to <strong>${type.ability}</strong>.
+  You're the <strong>${role}</strong> of the party${wearsHat ? `,
+  and have been known to wear a <strong>${hat}</strong>.` : '.'}
+  </span>`
 }
 
 const description = document.getElementById('description')
