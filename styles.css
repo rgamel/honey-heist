@@ -113,6 +113,7 @@ span.stat {
 .ending {
   font-size: 6rem;
   color: var(--clr-red700);
+  transform: scale(2);
 }
 
 i.fa {

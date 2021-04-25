@@ -44,7 +44,6 @@ function rand(sides = 6) {
 
 function makeBear() {
   const seed = getParameterByName('seed')
-  console.log()
   if (seed && seed.length) {
     const s = seed.split(',')
     return {
@@ -78,20 +77,26 @@ function getIndefiniteArticle(descriptor) {
   return 'a'
 }
 
-function parseBool(val) {
-  return val === true || val === 'true'
-}
-
 function makeString({descriptor, type, role, hat}) {
-  const wearsHat = parseBool(getParameterByName('hat'))
-
-  console.log('wearsHat:', wearsHat)
-  return `<span>
-  You are ${getIndefiniteArticle(descriptor)} 
-  <strong>${descriptor} ${type.type}</strong>
-  with the ability to <strong>${type.ability}</strong>.
-  You're the <strong>${role}</strong> of the party${wearsHat ? `,
-  and have been known to wear a <strong>${hat}</strong>.` : '.'}
+  return `
+    <span>
+      You are ${getIndefiniteArticle(descriptor)} 
+      <strong>
+        ${descriptor} ${type.type}
+      </strong>
+      with the ability to
+      <strong>
+        ${type.ability}
+      </strong>.
+      You're the
+      <strong>
+        ${role}
+      </strong>
+      of the party${hat ? `, and have been known to wear a 
+      <strong>
+        ${hat}
+      </strong>.
+    ` : '.'}
   </span>`
 }
 
@@ -136,11 +141,11 @@ function updateStats() {
 function checkForEndState() {
   if (bearCount >= 6) {
     addEndStyle(bearStat)
-    delayTransition(showEnding('bear'))
+    delayTransition(() => showEnding('bear'))
   }
   if (criminalCount >= 6) {
     addEndStyle(criminalStat)
-    delayTransition(showEnding('criminal'))
+    delayTransition(() => showEnding('criminal'))
   }
 }
 
