@@ -59,7 +59,6 @@ function getIndefiniteArticle(descriptor) {
 }
 
 function makeString({descriptor, type, role, hat}) {
-  const wearsHat = confirm('Would you like a hat?')
   return `<span>You are ${getIndefiniteArticle(descriptor)} <strong>${descriptor} ${type.type}</strong> with the ability to <strong>${type.ability}</strong>. You're the <strong>${role}</strong> of the party${wearsHat ? `, and have been known to wear a <strong>${hat}</strong>.` : '.'}</span>`
 }
 
