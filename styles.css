@@ -1,0 +1,125 @@
+
+:root {
+  --clr-red700: #D32F2F;
+  --clr-amber100: #FFECB3;
+  --clr-amber200: #FFE082;
+  --clr-amber300: #ffd54f;
+  --clr-amber400: #FFCA28;
+  --clr-amber500: #FFC107;
+  --clr-amber600: #FFB300;
+  --clr-amber700: #FFA000;
+  --clr-amber800: #FF8F00;
+  --clr-amber900: #FF6F00;
+  --clr-gray100: #F5F5F5;
+  --clr-gray500: #9E9E9E;
+  --clr-gray800: #424242;
+  --box-shadow: 0px 0px 10px var(--clr-gray500)
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 3rem;
+  color: var(--clr-gray800);
+  background-color: var(--clr-amber100);
+}
+
+h1#title {
+  color: var(--clr-amber900);
+  font-family: 'M Plus Rounded 1c', sans-serif;
+}
+
+button {
+  font-size: inherit;
+  margin: 1rem;
+  padding: 1rem 4rem;
+  background-color: var(--clr-amber900);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--clr-amber800);
+}
+
+button:active {
+  transform: scale(.9);
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.section {
+  width: 60vw;
+  margin: 1rem 2rem;
+  padding: 2rem;
+  border-style: none;
+  border-radius: 1rem;
+  border-color: var(--clr-gray500);
+  background-color: var(--clr-gray100);
+  box-shadow: var(--box-shadow);
+}
+
+div#description {
+  font-size: 2.5rem;
+  padding: 4rem;
+}
+
+div.section.outro {
+  padding: 4rem;
+}
+
+div.column {
+  display: flex;
+  flex-direction: column;
+}
+
+div.buttons.column {
+  margin-right: -2rem;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+span.stat {
+  font-size: 4rem;
+}
+
+.ending {
+  font-size: 6rem;
+  color: var(--clr-red700);
+}
+
+i.fa {
+  color: var(--clr-amber300);
+}
+a.rules-link {
+  font-size: 1rem;
+  color: inherit;
+  text-decoration-line: none;
+  color: var(--clr-amber900);
+  margin-left: 80vw;
+}
