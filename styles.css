@@ -162,10 +162,6 @@ p {
 
 
 @media screen and (max-width: 420px){
-  body * {
-    /* font-size: 1rem; */
-  }
-
   h1, button {
     font-size: 2rem;
   }
