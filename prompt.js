@@ -1,5 +1,5 @@
 function rand(sides = 6) {
-    return Math.floor(Math.random() * 6)
+    return Math.floor(Math.random() * sides)
 }
 
 function parseBool(val) {
